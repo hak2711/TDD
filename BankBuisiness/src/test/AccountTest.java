@@ -1,23 +1,31 @@
 package test;
 
 import main.Account;
+import org.junit.Test;
+
+import static org.junit.Assert.fail;
 
 public class AccountTest {
+    @Test
     public void testAccount() throws Exception {
-        Account account = new Account();
-        if (account == null){
-            throw new Exception("계좌생성 실패");
-        }
+        Account account = new Account(10000);
     }
 
-    public static void main(String[] args){
-        AccountTest test = new AccountTest();
-        try {
-            test.testAccount();
-        } catch (Exception e) {
-            System.out.println("실패(x)");
-            return;
+    @Test
+    public void testGetBalance() throws Exception{
+        Account account = new Account(10000);
+        if(account.getBalance() != 10000){
+            fail("Error occurred");
         }
-        System.out.println("성공(o)");
+
+        account = new Account(1000);
+        if(account.getBalance() != 1000){
+            fail("Error occurred");
+        }
+
+        account = new Account(0);
+        if(account.getBalance() != 0) {
+            fail("Error occurred");
+        }
     }
 }
