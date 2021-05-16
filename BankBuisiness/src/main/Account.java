@@ -3,8 +3,8 @@ package main;
 public class Account {
     private int balance;
 
-    public Account(int i) {
-        balance = i;
+    public Account(int money) {
+        balance = money;
     }
 
     public int getBalance() {
